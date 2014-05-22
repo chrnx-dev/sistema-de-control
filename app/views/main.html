@@ -1,0 +1,172 @@
+<!--state overview start-->
+<div class="row state-overview">
+    <div class="col-lg-3 col-sm-6">
+        <section class="panel">
+            <div class="symbol terques">
+                <i class="icon-suitcase"></i>
+            </div>
+            <div class="value">
+                <h1 class="count">
+                    0
+                </h1>
+                <p>Casos de Educaci&oacute;n</p>
+            </div>
+        </section>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <section class="panel">
+            <div class="symbol red">
+                <i class="icon-user-md"></i>
+            </div>
+            <div class="value">
+                <h1 class=" count2">
+                    0
+                </h1>
+                <p>Casos de Salud</p>
+            </div>
+        </section>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <section class="panel">
+            <div class="symbol yellow">
+                <i class="icon-group"></i>
+            </div>
+            <div class="value">
+                <h1 class=" count3">
+                    0
+                </h1>
+                <p>Casos Sociales</p>
+            </div>
+        </section>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+        <section class="panel">
+            <div class="symbol blue">
+                <i class="icon-ellipsis-horizontal"></i>
+            </div>
+            <div class="value">
+                <h1 class=" count4">
+                    0
+                </h1>
+                <p>Otros Casos</p>
+            </div>
+        </section>
+    </div>
+</div>
+<!--state overview end-->
+
+<section class="panel">
+    <div class="revenue-head">
+        <span>
+            <i class="icon-bar-chart"></i>
+        </span>
+        <h3>Porcentaje de Casos</h3>
+        <span class="rev-combo pull-right">
+           June 2013
+        </span>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-lg-6 col-sm-6 text-center">
+                <div class="easy-pie-chart">
+                    <div class="percentage" data-percent="35"><span>35</span>%</div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-6">
+                <div class="chart-info chart-position">
+                    <span class="increase"></span>
+                    <span>Revenue Increase</span>
+                </div>
+                <div class="chart-info">
+                    <span class="decrease"></span>
+                    <span>Revenue Decrease</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer revenue-foot">
+        <ul>
+            <li class="first active">
+                <a href="javascript:;">
+                    <i class="icon-suitcase"></i>
+                    Educaci&oacute;n
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class=" icon-user-md"></i>
+                    Salud
+                </a>
+            </li>
+            <li class="last">
+                <a href="javascript:;">
+                    <i class="icon-group"></i>
+                    Sociales
+                </a>
+            </li>
+            <li class="last">
+                <a href="javascript:;">
+                    <i class="icon-ellipsis-horizontal"></i>
+                    Otros
+                </a>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<script>
+
+    (function () {
+
+    // custom bar chart
+
+        if ($(".custom-bar-chart")) {
+            $(".bar").each(function () {
+                var i = $(this).find(".value").html();
+                $(this).find(".value").html("");
+                $(this).find(".value").animate({
+                    height: i
+                }, 2000)
+            })
+        }
+
+    // easy pie chart
+
+        $('.percentage').easyPieChart({
+            animate: 1000,
+            size: 135,
+            barColor:'#ff6c60'
+        });
+        $('.percentage-light').easyPieChart({
+            barColor: function(percent) {
+                percent /= 100;
+                return "rgb(" + Math.round(255 * (1-percent)) + ", " + Math.round(255 * percent) + ", 0)";
+            },
+            trackColor: '#666',
+            scaleColor: false,
+            lineCap: 'butt',
+            lineWidth: 15,
+            animate: 1000
+        });
+
+        $('.update-easy-pie-chart').click(function(){
+            $('.easy-pie-chart .percentage').each(function() {
+                var newValue = Math.floor(100*Math.random());
+                $(this).data('easyPieChart').update(newValue);
+                $('span', this).text(newValue);
+            });
+        });
+
+        $('.updateEasyPieChart').on('click', function(e) {
+            e.preventDefault();
+            $('.percentage, .percentage-light').each(function() {
+                var newValue = Math.round(100*Math.random());
+                $(this).data('easyPieChart').update(newValue);
+                $('span', this).text(newValue);
+            });
+        });
+
+        $('select.styled').customSelect();
+
+    })();
+</script>

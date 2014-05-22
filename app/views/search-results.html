@@ -1,0 +1,38 @@
+<!-- page start-->
+<section class="panel" >
+    <header class="panel-heading">
+        Classic Search
+    </header>
+    <div class="panel-body">
+        <form class="form-horizontal search-result">
+            <div class="form-group">
+                <label class="col-lg-1 col-sm-1 control-label">Search</label>
+                <div class="col-lg-8 col-sm-8">
+                    <input type="text" class="form-control input-xxlarge" ng-model="query">
+                    <p class="help-block">Acerca de {{results.hits.total}} resultados (0.23 seconds) </p>
+                </div>
+                <div class="col-lg-2">
+                    <button class="btn " type="submit">BUSCAR</button>
+                </div>
+            </div>
+        </form>
+        <div class="classic-search" ng-repeat="hit in results.hits.hits">
+            <h4 class="lead"><a href="#/casos/{{hit._source.tipo}}/get/{{hit._source.folio}}">[{{hit._source.folio}}] {{hit._source.name}}</a></h4>
+            <p>{{getTitle(hit._source.tipo)}} - {{subjectMessage(hit._source.subject, hit._source.tipo)}}</p>
+            <a href="#/casos/{{hit._source.tipo}}/get/{{hit._source.folio}}">ver más...</a>
+            <p>{{hit._source.description}} </p>
+        </div>
+
+        <div class="text-center">
+            <ul class="pagination">
+                <li><a href="#">«</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">»</a></li>
+            </ul>
+        </div>
+    </div>
+</section>

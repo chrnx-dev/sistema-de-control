@@ -1,0 +1,153 @@
+<!--mail inbox start-->
+<div class="mail-box">
+    <aside class="sm-side">
+        <div class="user-head">
+
+        </div>
+        <div class="inbox-body">
+            <a class="btn btn-compose" href="#/casos/{{getFilter()}}/add">
+                Agregar Caso
+            </a>
+
+        </div>
+        <ul class="inbox-nav inbox-divider">
+            <li class="active">
+                <a href="javascript:;" ng-click="listFilter('', Cases.page, Cases.pagination)">
+                    <i class="icon-inbox"></i> Todos
+                    <span ng-if="Cases.unseen > 0" class="label label-{{statusClass()}} pull-right">{{Cases.unseen}}</span>
+                </a>
+
+            </li>
+            <li>
+                <a href="javascript:;" ng-click="listFilter('en-tramite',Cases.page, Cases.pagination)">
+                    <i class="icon-envelope-alt"></i> En Tr&aacute;mite
+                    <span ng-if="Cases['en-tramite'] > 0" class="label label-{{statusClass('en-tramite')}} pull-right">{{Cases['en-tramite']}}</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;" ng-click="listFilter('en-espera',Cases.page, Cases.pagination)">
+                    <i class="icon-bookmark-empty"></i> En Espera
+                    <span ng-if="Cases['en-espera'] > 0" class="label label-{{statusClass('en-espera')}} pull-right">{{Cases['en-espera']}}</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;" ng-click="listFilter('resuelto',Cases.page, Cases.pagination)">
+                    <i class=" icon-external-link"></i> Resueltos
+                    <span ng-if="Cases.resuelto > 0" class="label label-{{statusClass('resuelto')}} pull-right">{{Cases.resuelto}}</span>
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;" ng-click="listFilter('cancelado',Cases.page, Cases.pagination)">
+                    <i class=" icon-trash"></i> Cancelados
+                    <span ng-if="Cases.cancelado > 0" class="label label-{{statusClass('cancelado')}} pull-right">{{Cases.cancelado}}</span>
+                </a>
+            </li>
+        </ul>
+        <ul class="nav nav-pills nav-stacked labels-info inbox-divider">
+            <li> <h4>Etiquetas</h4> </li>
+            <li> <a href="javascript:;"> <i class=" icon-sign-blank text-{{statusClass('en-tramite')}}"></i> En Tr&aacute;mite </a> </li>
+            <li> <a href="javascript:;"> <i class=" icon-sign-blank text-{{statusClass('en-espera')}}"></i> En Pausa </a> </li>
+            <li> <a href="javascript:;"> <i class=" icon-sign-blank text-{{statusClass('resuelto')}} "></i> Resuelto </a>
+            <li> <a href="javascript:;"> <i class=" icon-sign-blank text-{{statusClass('cancelado')}} "></i> Cancelado </a>
+
+            </li>
+        </ul>
+
+
+        <div class="inbox-body text-center">
+            <div class="btn-group">
+                <a href="javascript:;" class="btn mini btn-primary">
+                    <i class="icon-plus"></i>
+                </a>
+            </div>
+            <div class="btn-group">
+                <a href="javascript:;" class="btn mini btn-success">
+                    <i class="icon-phone"></i>
+                </a>
+            </div>
+            <div class="btn-group">
+                <a href="javascript:;" class="btn mini btn-info">
+                    <i class="icon-cog"></i>
+                </a>
+            </div>
+        </div>
+
+    </aside>
+    <aside class="lg-side">
+        <div class="inbox-head">
+            <h3>Casos</h3>
+            <form class="pull-right position" action="#">
+                <div class="input-append">
+                    <input type="text"  placeholder="Buscar Caso" class="sr-input" ng-model="searchText">
+                    <button type="button" class="btn sr-btn"><i class="icon-search"></i></button>
+                </div>
+            </form>
+        </div>
+        <div class="inbox-body">
+           <div class="mail-option">
+               <div class="chk-all">
+                   <input type="checkbox" class="mail-checkbox mail-group-checkbox">
+                   <div class="btn-group" >
+                       <a class="btn mini all" href="javascript:;" data-toggle="dropdown">
+                           Todos
+                           <i class="icon-angle-down "></i>
+                       </a>
+                       <ul class="dropdown-menu">
+                           <li><a href="javascript:;"> Ninguno</a></li>
+                           <li><a href="javascript:;"> Le&iacute;do</a></li>
+                           <li><a href="javascript:;"> Sin Leer</a></li>
+                       </ul>
+                   </div>
+               </div>
+
+               <div class="btn-group">
+                   <a class="btn mini tooltips" href="javascript:;" data-toggle="dropdown" data-placement="top" data-original-title="Refresh">
+                       <i class=" icon-refresh"></i>
+                   </a>
+               </div>
+               <div class="btn-group hidden-phone">
+                   <a class="btn mini blue" href="javascript:;" data-toggle="dropdown">
+                       Cambiar Estado
+                       <i class="icon-angle-down "></i>
+                   </a>
+                   <ul class="dropdown-menu">
+                       <li><a href="javascript:;" ng-click="changeStatus('en-tramite')"><i class="icon-pencil"></i> En Tr&aacute;mite</a></li>
+                       <li><a href="javascript:;" ng-click="changeStatus('en-espera')"><i class="icon-ban-circle"></i> En Espera</a></li>
+                       <li><a href="javascript:;" ng-click="changeStatus('resuelto')"><i class="icon-ban-circle"></i> Resuelto</a></li>
+                       <li class="divider"></li>
+                       <li><a href="javascript:;" ng-click="changeStatus('cancelado')"><i class="icon-trash"></i> Cancelado</a></li>
+                   </ul>
+               </div>
+
+
+               <ul class="unstyled inbox-pagination">
+                   <li><span>{{countInit(Cases.page, Cases.pagination)}} - {{counts(Cases.total, Cases.page, Cases.pagination)}} de {{Cases.total}}</span></li>
+                   <li>
+                       <a href="javascript:;" class="np-btn" ng-click="nextPage(Cases.prior, Cases.pagination)"><i class="icon-angle-left  pagination-left"></i></a>
+                   </li>
+                   <li>
+                       <a href="javascript:;" class="np-btn" ng-click="nextPage(Cases.next, Cases.pagination)"><i class="icon-angle-right pagination-right"></i></a>
+                   </li>
+               </ul>
+           </div>
+            <table class="table table-inbox table-hover">
+              <tbody>
+                <tr class="{{Case.seen?'':'unread'}}" ng-repeat="Case in Cases.results | filter:searchText" >
+                    <td class="inbox-small-cells">
+                        <input type="checkbox" class="mail-checkbox" data-id="{{Case._id}}">
+                    </td>
+                    <td class="inbox-small-cells"><i class="icon-star"></i></td>
+
+                    <td class="view-message "><a href="#/casos/{{getFilter()}}/get/{{Case.folio}}" >{{Case.name}}</a></td>
+                    <td class="view-message ">{{subjectMessage(Case.subject)}}</td>
+                    <td class="view-message  inbox-small-cells"><i class="icon-paper-clip"></i></td>
+                    <td class="inbox-small-cells"><i class=" icon-sign-blank text-{{statusClass(Case.status)}}"></i></td>
+                    <td class="view-message  text-right">{{getDate(Case.created)}}</td>
+                </tr>
+
+            </tbody>
+            </table>
+        </div>
+    </aside>
+</div>
+<!--mail inbox end

@@ -1,0 +1,23 @@
+<!--header start-->
+<header class="header white-bg" ng-include="'/templates/header.html'"></header>
+<!--header end-->
+<!--sidebar start-->
+<aside ng-include="'/templates/left-bar.html'" onload="sideBarLoad()"></aside>
+<!--sidebar end-->
+<!--main content start-->
+<section id="main-content">
+        <section class="wrapper" ui-view >
+
+        </section>
+</section>
+<!--main content end-->
+<!--footer start-->
+<footer class="site-footer">
+        <div class="text-center">
+                2013 &copy; Zero One iT Desarrollos.
+                <a href="#" class="go-top">
+                        <i class="icon-angle-up"></i>
+                </a>
+        </div>
+</footer>
+<!--footer end-->

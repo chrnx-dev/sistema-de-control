@@ -1,0 +1,203 @@
+<div class="row">
+    <div class="col-lg-12">
+        <section class="panel">
+            <header class="panel-heading">
+                Agregar Caso
+            </header>
+            <div class="panel-body">
+                <div class="stepy-tab">
+                    <ul id="default-titles" class="stepy-titles clearfix">
+                        <li id="default-title-0" class="current-step">
+                            <div>Datos Personales</div>
+                        </li>
+                        <li id="default-title-1" class="">
+                            <div>Datos del Caso</div>
+                        </li>
+                        <!--
+                        <li id="default-title-2" class="">
+                            <div>Agregar Archivos</div>
+                        </li>
+                        -->
+                    </ul>
+                </div>
+                <form  role="form" ng-submit="addCase()" name="CaseForm" class="form-horizontal" id="agregarCaso">
+                    <fieldset title="Datos Personales" class="step" id="default-step-0">
+                        <legend></legend>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Nombre Completo</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" ng-model="fields.name" id="name" placeholder="Nombre del Solicitante">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Correo Elect&oacute;nico</label>
+                            <div class="col-lg-10">
+                              <div class="input-group">
+                                <span class="input-group-addon">@</span>
+                                <input type="text" class="form-control" ng-model="fields.email" placeholder="e-mail">
+
+                              </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Tel&eacute;fono</label>
+                            <div class="col-lg-10">
+                              <div class="input-group">
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-earphone"></span></span>
+                                <input type="text" data-mask="(999) 999-9999" class="form-control" ng-model="fields.phone" placeholder="tel&eacute;fono">
+                              </div>
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                    <fieldset title="Datos del Caso" class="step" id="default-step-1" >
+                        <legend> </legend>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Asunto</label>
+                            <div class="col-lg-10">
+                              <select name="asunto" class="form-control" ng-model="fields.subject">
+                                <option ng-repeat="subtype in setup.subtypes" value="{{subtype.id}}">{{subtype.name}}</option>
+                              </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Descripci&oacute;n</label>
+                            <div class="col-lg-10">
+                              <textarea class="form-control" cols="60" rows="5" id="description" ng-model="fields.description"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Canalizaci&oacute;n</label>
+                            <div class="col-lg-10">
+                              <textarea class="form-control" cols="60" rows="5" id="canalizacion" ng-model="fields.canalizacion"></textarea>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                    <!--
+                    <fieldset title="Agregar Archivos" class="step" id="default-step-2" >
+                        <legend> </legend>
+
+                    </fieldset>
+                    -->
+                    <button type="submit" class="finish btn btn-danger" value="finish" >Guardar <span class="glyphicon glyphicon-save"></span></button>
+
+                </form>
+            </div>
+        </section>
+    </div>
+</div>
+
+ <script>
+
+      //step wizard
+
+      $(function() {
+          $('#agregarCaso').stepy({
+              backLabel: 'Atr&aacute;s',
+              description:true,
+              block: true,
+              nextLabel: 'Siguiente',
+              titleClick: true,
+              titleTarget: '.stepy-tab'
+          });
+      });
+  </script>
+<!--
+<div class="row">
+  <div class="col-lg-12">
+    <section class="panel">
+        <header class="panel-heading">
+            Agregar Caso
+        </header>
+        <div class="panel-body">
+            <form  role="form" ng-submit="addCase()" name="CaseForm">
+              <div class="row">
+                <div class="col-md-5"><input type="text" class="form-control" ng-model="fields.name" id="name" placeholder="Nombre del Solicitante"></div>
+                <div class="col-md-1 col-md-offset-4">Folio</div>
+                <div class="col-md-2">10987</div>
+              </div>
+
+              <br />
+              <div class="row">
+                <label class="col-md-1" for="asunto">Asunto:</label>
+                <div class="col-md-4">
+                  <select name="asunto" class="form-control" ng-model="fields.subject">
+                    <option ng-repeat="subtype in setup.subtypes" value="{{subtype.id}}">{{subtype.name}}</option>
+                  </select>
+                </div>
+              </div>
+
+              <br />
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="input-group">
+                    <span class="input-group-addon">@</span>
+                    <input type="text" class="form-control" ng-model="fields.email" placeholder="e-mail">
+
+                  </div>
+                </div>
+
+
+
+                <div class="col-md-4 col-md-offset-4">
+                  <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-earphone"></span></span>
+                    <input type="text" data-mask="(999) 999-9999" class="form-control" ng-model="fields.phone" placeholder="tel&eacute;fono">
+                  </div>
+                </div>
+
+              </div>
+
+              <br />
+
+              <div class="row">
+                <label class="col-md-12" for="description">Descripci&oacute;n</label>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <textarea class="form-control" id="description" ng-model="fields.description"></textarea>
+                </div>
+              </div>
+
+              <br />
+
+              <div class="row">
+                <label class="col-md-12" for="observation" >Observaci&oacute;n</label>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <textarea class="form-control" id="observation" ng-model="fields.observacion"></textarea>
+                </div>
+              </div>
+
+              <br />
+
+              <div class="row">
+                <label class="col-md-12" for="canalizacion" >Canalizaci&oacute;n</label>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <textarea class="form-control" id="canalizacion" ng-model="fields.canalizacion"></textarea>
+                </div>
+              </div>
+
+              <br />
+
+              <div class="row">
+                <div class="col-md-12">
+                  <button type="submit" class="btn btn-primary">Guardar <span class="glyphicon glyphicon-save"></span></button>
+                </div>
+              </div>
+
+            </form>
+
+        </div>
+    </section>
+  </div>
+</div>
+-->

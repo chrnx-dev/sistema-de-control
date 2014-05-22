@@ -1,0 +1,57 @@
+<!-- invoice start-->
+<section>
+    <div class="panel panel-primary">
+        <div class="panel-heading navyblue"> {{Cases.name}}</div>
+        <div class="panel-body">
+            <div >
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-4 text-right">Folio <span class="text-danger">{{Cases.folio}}</span></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12"><h3><strong>{{Cases.name}}</strong></h3></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3"><i class=" icon-envelope"></i> {{Cases.email}}</div>
+                    <div class="col-md-2"><i class="icon-phone-sign"></i> {{Cases.phone}}</div>
+                </div>
+                <br />
+
+                <div class="row">
+                    <div class="col-md-11">Asunto: <strong>{{subjectMessage(Cases.subject)}}</strong></div>
+                </div>
+
+                <br />
+                <div class="row">
+                    <div class="col-md-8">Descripci&oacute;n del Caso.</div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-8"> <p class="text-justify" ng-bind-html="Cases.description|newlines" ></p></div>
+                </div>
+                <br />
+
+                <div class="row">
+                    <div class="col-md-8">Observaci&oacute;n del Caso.</div>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-8"> <p class="text-justify" ng-bind-html="Cases.observacion|newlines" ></p></div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-2"> Canalizado a:</div>
+                    <div class="col-md-6"> <p class="text-justify" ng-bind-html="Cases.canalizacion|newlines" ></p></div>
+                </div>
+                <br />
+                <div class="text-center invoice-btn row">
+                    <div class="col-md-8">
+                        <a class="btn btn-danger btn-lg"><i class="icon-check"></i> Regresar </a>
+                        <a class="btn btn-info btn-lg" onclick="javascript:window.print();"><i class="icon-print"></i> Imprimir </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- invoice end-->

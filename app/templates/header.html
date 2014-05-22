@@ -1,0 +1,45 @@
+<div class="sidebar-toggle-box">
+    <div data-original-title="Men&uacute; Principal" data-placement="right" class="icon-reorder tooltips"></div>
+</div>
+<!--logo start-->
+<a href="#/" class="logo">CER<span>CA</span></a>
+<!--logo end-->
+
+
+<div class="top-nav " ng-controller="MainCtrl">
+    <!--search & user info start-->
+    <ul class="nav pull-right top-menu">
+        <li>
+            <input type="text" class="form-control search" placeholder="Buscar" ng-model="query">
+        </li>
+        <!-- Cambio de Ciudad
+        <li class="dropdown language">
+            <a data-close-others="true" data-hover="dropdown" data-toggle="dropdown" class="dropdown-toggle" href="">
+                <img src="/images/culiacan.png" alt="">
+                <span class="username">Culiacan</span>
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="#"><img src="/images/escuinapa.png" alt=""> Escuinapa</a></li>
+            </ul>
+        </li>
+        -->
+        <!-- user login dropdown start-->
+        <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="">
+                <img alt="" src="/images/avatar1_small.jpg">
+                <span class="username">{{user.name}} {{user.lastname}}</span>
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu extended logout">
+                <div class="log-arrow-up"></div>
+                <!--<li><a href="#"><i class=" icon-suitcase"></i>Perfil</a></li>
+                <li><a href="#"><i class="icon-cog"></i> Configuraci&oacute;n</a></li>
+                <li><a href="#"><i class="icon-bell-alt"></i> Notificaci&oacute;n</a></li>-->
+                <li><a ng-click="logout()"><i class="icon-key"></i>Salir</a></li>
+            </ul>
+        </li>
+        <!-- user login dropdown end -->
+    </ul>
+    <!--search & user info end-->
+</div>
